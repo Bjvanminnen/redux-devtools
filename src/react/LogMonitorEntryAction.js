@@ -3,13 +3,17 @@ import JSONTree from 'react-json-tree';
 
 const styles = {
   actionBar: {
-    paddingTop: 8,
-    paddingBottom: 7,
+    paddingTop: 0,
+    paddingBottom: 0,
     paddingLeft: 16
   },
   payload: {
     margin: 0,
     overflow: 'auto'
+  },
+  json: {
+    marginTop: 0,
+    marginBottom: 0
   }
 };
 
@@ -21,7 +25,7 @@ export default class LogMonitorAction extends React.Component {
         ...styles.payload,
         backgroundColor: this.props.theme.base00
       }}>
-        { Object.keys(payload).length > 0 ? <JSONTree theme={this.props.theme} keyName={'action'} data={payload}/> : '' }
+        { Object.keys(payload).length > 0 ? <JSONTree theme={this.props.theme} style={styles.json} keyName={'action'} data={payload}/> : '' }
       </div>
     );
   }

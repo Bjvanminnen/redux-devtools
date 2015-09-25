@@ -8,9 +8,10 @@ const styles = {
     WebkitUserSelect: 'none'
   },
   tree: {
-    paddingLeft: 0
-  }
-};
+    paddingLeft: 0,
+    marginTop: 0,
+    marginBottom: 0
+  }};
 
 export default class LogMonitorEntry extends Component {
   static propTypes = {
