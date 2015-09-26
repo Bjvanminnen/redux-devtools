@@ -42,6 +42,8 @@ export default class DebugPanel extends Component {
   };
 
   render() {
+    console.log('debugpanel: ' + React.version);
+
     return (
       <div style={{...this.props.getStyle(this.props), ...this.props.style}}>
         {this.props.children}

@@ -29,6 +29,16 @@ const styles = {
     bottom: 0,
     overflowX: 'hidden',
     overflowY: 'auto'
+  },
+  bottomLeft: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0
+  },
+  bottomRight: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0
   }
 };
 
@@ -138,6 +148,28 @@ export default class LogMonitor extends Component {
     }
   }
 
+  handleBack() {
+    // disable last non-skipped action
+    const { stagedActions, skippedActions, toggleAction } = this.props;
+    for (var i = stagedActions.length - 1; i >= 0; i--) {
+      if (!skippedActions[i]) {
+        toggleAction(i);
+        return;
+      }
+    }
+  }
+
+  handleForward() {
+    // reenable first disabled action
+    const { stagedActions, skippedActions, toggleAction } = this.props;
+    for (var i = 0; i < stagedActions.length; i++) {
+      if (skippedActions[i]) {
+        toggleAction(i);
+        return;
+      }
+    }
+  }
+
   render() {
     const elements = [];
     const { monitorState, skippedActions, stagedActions, computedStates, select } = this.props;
@@ -187,6 +219,11 @@ export default class LogMonitor extends Component {
         </div>
         <div style={styles.elements} ref="elements">
           {elements}
+        </div>
+        <div style={styles.bottomLeft}>
+          {/* TODO - could have these enabled/disabled as appropriate */}
+          <LogMonitorButton theme={theme} onClick={::this.handleBack} enabled="true">Back</LogMonitorButton>
+          <LogMonitorButton theme={theme} onClick={::this.handleForward} enabled="true">Forward</LogMonitorButton>
         </div>
       </div>
     );
