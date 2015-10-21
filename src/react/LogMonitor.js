@@ -28,7 +28,8 @@ const styles = {
     top: 38,
     bottom: 0,
     overflowX: 'hidden',
-    overflowY: 'auto'
+    overflowY: 'auto',
+    paddingBottom: 35    
   },
   bottomLeft: {
     position: 'absolute',
@@ -151,7 +152,7 @@ export default class LogMonitor extends Component {
   handleBack() {
     // disable last non-skipped action
     const { stagedActions, skippedActions, toggleAction } = this.props;
-    for (var i = stagedActions.length - 1; i >= 0; i--) {
+    for (let i = stagedActions.length - 1; i >= 0; i--) {
       if (!skippedActions[i]) {
         toggleAction(i);
         return;
@@ -162,7 +163,7 @@ export default class LogMonitor extends Component {
   handleForward() {
     // reenable first disabled action
     const { stagedActions, skippedActions, toggleAction } = this.props;
-    for (var i = 0; i < stagedActions.length; i++) {
+    for (let i = 0; i < stagedActions.length; i++) {
       if (skippedActions[i]) {
         toggleAction(i);
         return;
