@@ -1,4 +1,5 @@
-import React, { PropTypes, findDOMNode, Component } from 'react';
+import React, { PropTypes, Component } from 'react';
+import { findDOMNode } from 'react-dom';
 import LogMonitorEntry from './LogMonitorEntry';
 import LogMonitorButton from './LogMonitorButton';
 import * as themes from './themes';
@@ -29,7 +30,7 @@ const styles = {
     bottom: 0,
     overflowX: 'hidden',
     overflowY: 'auto',
-    paddingBottom: 35    
+    paddingBottom: 35
   },
   bottomLeft: {
     position: 'absolute',
